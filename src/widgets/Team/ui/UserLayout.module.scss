@@ -1,0 +1,74 @@
+.UserLayout {
+  display: flex;
+  padding: 18px 0;
+  column-gap: 11px;
+  width: 100%;
+  justify-content: space-between;
+  padding: 18px 29px;
+}
+
+.UserLayout:hover {
+  background-color: var(--user-hover-background);
+}
+
+.profilePicture {
+  width: 64px;
+  height: 64px;
+}
+
+.profilePicture img {
+  width: 100%;
+  background-size: cover;
+  height: 100%;
+  border-radius: 50%; 
+} 
+
+.mainInfo {
+  display: flex;
+  flex-direction: column;
+  row-gap: 9px;
+}
+
+.upperBlock {
+  display: flex;
+  column-gap: 11px;
+}
+
+.lowerBlock {
+  display: flex;
+  column-gap: 5px;
+}
+
+.name {
+  color: var(--primary-text-color);
+  font: var(--font-m);
+}
+
+.email {
+  font: var(--font-m);
+  color: var(--secondary-text-color);
+  font-weight: 450;
+}
+
+.permission {
+  font: var(--font-s);
+  color: var(--secondary-text-color);
+  padding: 5px 10px;
+  border-radius: 10px;
+  border: 1px solid var(--permission-border-color);
+}
+
+.leftBlock {
+  display: flex;
+  column-gap: 11px;
+}
+
+.noPicture {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 64px;
+  width: 64px;
+  background-color: var(--background-color);
+  border-radius: 50%;
+}

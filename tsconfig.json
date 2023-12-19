@@ -12,14 +12,15 @@
     "paths": {
       "*": ["./src/*"]
     },
-    "strictNullChecks": true
+    "strictNullChecks": true,
+    "resolveJsonModule": true
   },
   "ts-node": {
     "compilerOptions": {
-      "module": "CommonJS"
+      "module": "CommonJS",
     },
   },
   "exclude": [
     "node_modules"
-  ], 
+  ],
 }

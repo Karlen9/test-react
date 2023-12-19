@@ -1,36 +1,16 @@
-.buttons {
-  margin-top: 10px;
-  margin-left: 10px;
-}
-
-.nameSection {
-  height: calc(100vh - 110px);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-}
-
-.nameSpan {
-  font-size: 164px;
-  font-weight: 600;
-  user-select: none;
-}
-
 .MainPage {
   display: flex;
-  width: 100%;
-  height: 100%;
-  height: calc(100vh - 40px);
+  background-color: var(--background-color);
+  min-height: 100vh;
+  justify-content: center;
+  padding-top: 54px; 
+  padding: 53px 100px 0;
 }
 
-
-.row {
-  width: 100%;
+.pageWrapper {
   display: flex;
-  flex-direction: column;
-  height: 100%;
-  padding: 0 20px;
+  flex-grow: 1;
+  height: fit-content;
 }
 
 .error {

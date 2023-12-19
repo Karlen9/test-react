@@ -1,5 +1,0 @@
-{
-    "plugins": [
-      ["@svgr/babel-plugin-transform-svg-component", { "titleProp": true }]
-    ]
-} 

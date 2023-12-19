@@ -1,57 +1,29 @@
-.Button {
-  all: unset;
-  cursor: pointer;
-  padding: 6px 13px;
-  border-radius: 5px;
-  min-width: 50px;
+
+
+.clean {
+  background: none;  
+	border: none;
+	padding: 0;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
 }
 
-.clear {
-  all: unset;
-  cursor: pointer;
+.basic {
+  background-color: var(--button-bg-color);
+  border-radius: 15px;
+  font-size: 20px;
+  line-height: 20px;
+  text-align: center;
+  color: var(--button-text-color);
 }
 
-.submit {
-  cursor: pointer;
-  background-color: var(--submit-button-bg);
-  color: var(--submit-button-color);
-}
-
-.cancel {
-  outline: 1px solid var(--cancel-button-outline);
-  background-color: var(--cancel-button-bg);
-  color: var(--cancel-button-outline);
-}
-
-.disabled {
-  background-color: var(--disabled-button-bg);
-  color: var(--disabled-button-color);
-  cursor: not-allowed;
-}
-
-.outlined {
-  outline: 1px solid var(--outlined-color);
-  color: var(--outlined-color);
-}
-
-.icon {
-  all: unset;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  padding: 03px;
-  border-radius: 5px;
-  outline: 1px solid var(--outlined-color);
-  color: var(--outlined-color);
-}
-
-.loading {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 6px 13px;
-  border-radius: 5px;
-  outline: 1px solid var(--cancel-button-outline);
-  background-color: var(--cancel-button-bg);
-  color: var(--cancel-button-outline);
+.thin {
+  background-color: var(--button-bg-color);
+  border-radius: 10px;
+  flex-shrink: 0;
+  font-size: 18px;
+  color: var(--button-text-color);
+  line-height: 20px;
+  text-align: center;
 }

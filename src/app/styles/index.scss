@@ -1,7 +1,5 @@
 @import "reset";
 @import "variables/global";
-@import "themes/normal";
-@import "themes/dark";
 @import url("https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap");
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;700&display=swap');
 
@@ -10,8 +8,6 @@
   font-family: var(--font-family-main);
   background: var(--main-background-color);
   color: var(--primary-text-color);
-  min-height: 100vh;
-  padding: 20px;
 }
 
 .content-page {
@@ -20,4 +16,28 @@
 
 .page-wrapper {
   flex-grow: 1;
+}
+
+.button-thin {
+  cursor: pointer;
+  background-color: var(--button-bg-color);
+  border: none;
+  color: var(--button-text-color);
+  padding: 10px 20px;
+  border-radius: 10px;
+  font-size: 18px;
+  line-height: 20px;
+  font-weight: 450;
+  text-align: center;
+}
+
+.icon-button {
+  background: none;  
+	border: none;
+	padding: 0;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
+  display: flex;
+  align-items: center;
 }

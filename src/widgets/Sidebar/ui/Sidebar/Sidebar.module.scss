@@ -1,18 +1,26 @@
 .Sidebar {
   display: flex;
-  justify-content: flex-start;
-  align-items: start;
-  height: calc(100vh - var(--navbar-height));
   width: var(--sidebar-width);
-  background-color: var(--sidebar-open-bg);
-  position: relative;
+  color: var(--sidebar-bg);
+  background-color: var(--sidebar-bg);
   transition: background-color 0.3s, width 0.3s;
-  padding: 20px;
-  // border-right: 1px solid var(--primary-color);
+  justify-content: center;
+  border-radius: 0 0 15px 15px;
+  border: 1px black;
+
 }
 
 .collapsed {
+  border: 1px black;
+  display: flex;
   width: var(--sidebar-collapsed-width);
   background-color: var(--sidebar-bg);
   transition: background-color 0.3s, width 0.3s;
+  justify-content: center;
+}
+
+.BurgerButton {
+  cursor: pointer;
+  display: flex;
+  width: 100%;
 }

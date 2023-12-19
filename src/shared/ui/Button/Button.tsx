@@ -4,13 +4,9 @@ import Loading from 'shared/assets/icons/loading.svg'
 import cls from './Button.module.scss'
 
 export enum ThemeButton {
-  CLEAR = 'clear',
-  SUBMIT = 'submit',
-  CANCEL = 'cancel',
-  DISABLED = 'disabled',
-  OUTLINED = 'outlined',
-  ICON = 'icon',
-  LOADING = 'loading'
+  BASIC = 'basic',
+  THIN = 'thin',
+  CLEAN = 'clean'
 }
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
@@ -28,8 +24,6 @@ export const Button: FC<ButtonProps> = (props) => {
         cls[theme ?? '']
       ])}
       {...restProps}
-    >
-      {theme === ThemeButton.LOADING ? <Loading /> : children}
-    </button>
+    ></button>
   )
 }
