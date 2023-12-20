@@ -1,0 +1,22 @@
+.UserOptions {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  padding: 22px 26px;
+  background-color: var(--sidebar-bg);
+  border-radius: 15px;
+  row-gap: 17px;
+}
+
+.option {
+  white-space: nowrap;
+  color: var(--primary-text-color);
+  font: var(--font-m);
+  display: flex;
+  justify-content: start;
+}
+
+.option:disabled,
+.option[disabled] {
+  color: var(--secondary-text-color);
+}

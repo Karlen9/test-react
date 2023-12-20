@@ -40,4 +40,12 @@
 	outline: inherit;
   display: flex;
   align-items: center;
+  justify-content: center;
+}
+
+.regular-button {
+  padding: 21px;
+  background-color: var(--button-bg-color);
+  color: var(--button-text-color);
+  font: var(--font-m);
 }

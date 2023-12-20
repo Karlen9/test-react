@@ -7,6 +7,8 @@
   justify-content: center;
   border-radius: 0 0 15px 15px;
   border: 1px black;
+  padding-top: 25px;
+  height: 100vh;
 
 }
 
@@ -23,4 +25,21 @@
   cursor: pointer;
   display: flex;
   width: 100%;
+}
+
+.sidebarMenu {
+  display: flex;
+  flex-direction: column;
+  row-gap: 30px;
+}
+
+.Logo {
+  display: flex;
+  justify-content: center;
+}
+
+.SidebarContainer {
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
 }
