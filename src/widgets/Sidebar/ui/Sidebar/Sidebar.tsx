@@ -1,7 +1,6 @@
 import { classNames } from 'shared/lib/classNames/classNames'
 import cls from './Sidebar.module.scss'
-import { useMemo, useState } from 'react'
-import BurgerIcon from 'shared/assets/icons/burger.svg'
+import { useState } from 'react'
 import { SidebarMenu } from './SidebarMenu'
 import Logo from 'shared/assets/icons/logo.svg'
 import profilePic from 'shared/assets/images/profile-pic.png'

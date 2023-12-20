@@ -2,8 +2,6 @@
   display: flex;
   flex-direction: column;
   row-gap: 20px;
-  padding: 40px 60px;
-  background-color: var(--sidebar-bg);
   border-radius: var(--modal-border-radius);
 }
 
@@ -13,6 +11,7 @@
   color: var(--primary-text-color);
   font-weight: 600;
   text-align: center;
+  padding: 0 50px;
 }
 
 

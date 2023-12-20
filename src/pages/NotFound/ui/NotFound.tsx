@@ -1,5 +1,6 @@
 import { AppLink } from 'shared/ui'
 import cls from './NotFound.module.scss'
+import { SendInvitationModal, UserRemovedModal } from 'widgets/Team/ui/modals'
 
 const NotFound = () => {
   return (

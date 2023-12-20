@@ -44,9 +44,11 @@ export const SidebarMenu: React.FC<SidebarMenuProps> = ({ collapsed }) => {
       <AppLink to={`/${AppRoutes.EXCHANGE}`}>
         <Exchange />
       </AppLink>
-      <Button theme={ButtonTheme.ICON}>
-        <Exit />
-      </Button>
+      <div className={cls.buttonWrapper}>
+        <button className={cls.exitButton}>
+          <Exit />
+        </button>
+      </div>
     </div>
   )
 }

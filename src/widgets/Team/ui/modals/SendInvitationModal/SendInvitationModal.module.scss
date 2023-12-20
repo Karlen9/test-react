@@ -1,0 +1,55 @@
+.SendInvitationModal {
+  padding: 0 !important;
+}
+
+.closeButtonWrapper {
+  background-color: var(--background-color);
+  width: 40px;
+  height: 40px;
+  border-radius: 15px;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+}
+button {
+  justify-content: flex-end !important;
+}
+
+.closeButtonContainer {
+  width: 100%;
+  display: flex;
+  padding: 26px 20px 0 0;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  row-gap: 8px;
+  padding: 0 61px 59px;
+}
+
+.header {
+  font-size: 34px;
+  line-height: 44px;
+  text-align: center;
+  font-weight: 600;
+  color: var(--primary-text-color);
+  padding: 0 18px;
+  margin-bottom: 9px;
+}
+
+input {
+  border-radius: 15px;
+  padding: 21px 20px;
+  border: 1px solid var(--permission-border-color);
+  background-color: var(--sidebar-bg);
+
+}
+
+
+select {
+  background-color: var(--sidebar-bg);
+  border-radius: 15px;
+  padding: 21px 20px;
+  border: 1px solid var(--permission-border-color);
+}

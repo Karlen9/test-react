@@ -7,10 +7,15 @@ import { Button } from 'shared/ui'
 import { useEffect, useRef, useState } from 'react'
 import { UserOptions } from '../UserOptions'
 import { onClickOutsideListener } from 'shared/lib/utils/onClickOutsideListener'
+import { classNames } from 'shared/lib/classNames/classNames'
 
 type UserLayoutProps = {
   user: User
   key: string
+}
+
+type PermissionProps = {
+  permission: string
 }
 
 export const UserLayout: React.FC<UserLayoutProps> = ({ user, key }) => {
@@ -50,22 +55,32 @@ export const UserLayout: React.FC<UserLayoutProps> = ({ user, key }) => {
           </div>
           <div className={cls.lowerBlock}>
             {user.permissions.map((permission) => (
-              <Permission permission={permission} />
+              <div key={key}>
+                <Permission key={permission} permission={permission} />
+              </div>
             ))}
           </div>
         </div>
       </div>
 
-      <div className={cls.options}>
+      <div className={cls.options} ref={optionsRef}>
         <Button theme={ButtonTheme.ICON} onClick={onOptionsClick}>
           <OptionsIcon />
         </Button>
-        {isOptionsOpen && <UserOptions ref={optionsRef} />}
+        {isOptionsOpen && <UserOptions />}
       </div>
     </div>
   )
 }
 
-const Permission = ({ permission }) => {
-  return <div className={cls.permission}>{permission}</div>
+const Permission: React.FC<PermissionProps> = ({ permission }) => {
+  return (
+    <div
+      className={classNames(cls.permission, {}, [
+        permission === 'Администратор' ? cls.admin : ''
+      ])}
+    >
+      {permission}
+    </div>
+  )
 }
