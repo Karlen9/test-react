@@ -16,15 +16,13 @@ export const Sidebar = () => {
     <div
       className={classNames(cls.Sidebar, { [cls.collapsed]: collapsed }, [])}
     >
-      <div className={cls.SidebarContainer}>
-        <div className={cls.Logo}>
-          <Logo />
-        </div>
-        <div className={cls.ProfilePic}>
-          <img src={profilePic} alt="" />
-        </div>
-        <SidebarMenu collapsed={collapsed} />
+      <div className={cls.Logo}>
+        <Logo />
       </div>
+      <div className={cls.pictureWrapper}>
+        <img src={profilePic} alt="" />
+      </div>
+      <SidebarMenu collapsed={collapsed} />
     </div>
   )
 }

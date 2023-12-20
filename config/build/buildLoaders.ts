@@ -42,10 +42,5 @@ export function buildLoaders({ isDev }: BuildOptions): webpack.RuleSetRule[] {
     exclude: '/node_modules/'
   }
 
-  const jsonLoader = {
-    test: /\.json$/,
-    loader: 'json-loader'
-  }
-
-  return [typesctiptLoader, cssLoader, svgLoader, fileLoader, jsonLoader]
+  return [typesctiptLoader, cssLoader, svgLoader, fileLoader]
 }

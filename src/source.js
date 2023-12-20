@@ -1,4 +1,4 @@
-const users = [
+export let users = [
   {
     name: 'Артем Иванов',
     email: 'artem@gmail.com',
@@ -28,4 +28,11 @@ const users = [
   }
 ]
 
-export default users
+export const removeFromArray = (email) => {
+  const updatedArray = users.filter((user) => user.email !== email)
+  users = updatedArray
+}
+
+export const addToArray = (user) => {
+  users = [...users, user]
+}

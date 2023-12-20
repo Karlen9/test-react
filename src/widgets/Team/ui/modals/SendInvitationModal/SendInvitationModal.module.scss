@@ -1,5 +1,9 @@
 .SendInvitationModal {
   padding: 0 !important;
+  position: absolute;
+  left: 55%;
+  transform: translate(-55%, 0);
+  top: 30%;
 }
 
 .closeButtonWrapper {
@@ -52,4 +56,8 @@ select {
   border-radius: 15px;
   padding: 21px 20px;
   border: 1px solid var(--permission-border-color);
+}
+
+.error {
+  color: red;
 }
