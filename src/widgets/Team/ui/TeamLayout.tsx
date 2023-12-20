@@ -1,6 +1,4 @@
-import { Button } from 'shared/ui'
 import cls from './TeamLayout.module.scss'
-import { ThemeButton } from 'shared/ui/Button/Button'
 import SearchIcon from 'shared/assets/icons/search.svg'
 import users from '../../../source'
 import { UserLayout } from './UserLayout'

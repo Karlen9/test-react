@@ -2,9 +2,6 @@ import { classNames } from 'shared/lib/classNames/classNames'
 import cls from './Sidebar.module.scss'
 import { useMemo, useState } from 'react'
 import BurgerIcon from 'shared/assets/icons/burger.svg'
-import { useTheme } from 'app/providers/ThemeProvider'
-import { Button } from 'shared/ui'
-import { ThemeButton } from 'shared/ui/Button/Button'
 
 export const Sidebar = () => {
   const [collapsed, setCollapsed] = useState(true)
