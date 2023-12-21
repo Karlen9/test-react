@@ -5,7 +5,7 @@
   background-color: var(--sidebar-bg);
   flex-grow: 1;
   border-radius: 15px;
-} 
+}
 
 .header {
   display: flex;
@@ -14,6 +14,7 @@
   padding: 19px 29px;
   align-items: center;
   border-bottom: 1px solid var(--background-color);
+  column-gap: 96px;
 }
 
 .leftBlock {
@@ -26,6 +27,7 @@
 .rightBlock {
   display: flex;
   column-gap: 20px;
+  width: 100%;
 }
 
 .usersWrapper {
@@ -41,4 +43,8 @@
   justify-content: center;
   font: var(--font-m);
   font-weight: 500;
+}
+
+.buttonWrapper {
+  max-width: 215px;
 }

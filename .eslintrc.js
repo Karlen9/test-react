@@ -9,7 +9,7 @@ module.exports = {
     ecmaVersion: 'latest',
     sourceType: 'module'
   },
-  plugins: ['react', '@typescript-eslint', 'i18next'],
+  plugins: ['react', '@typescript-eslint'],
   rules: {
     '@typescript-eslint/explicit-function-return-type': 'off',
     'react/react-in-jsx-scope': 'off',
@@ -24,7 +24,6 @@ module.exports = {
     '@typescript-eslint/ban-ts-comment': 'off',
     'react/jsx-indent-props': [2, 2],
     'react/function-component-definition': 'off',
-    'i18next/no-literal-string': ['warn', { markupOnly: true }],
     'react/no-deprecated': 'off'
   },
   globals: {

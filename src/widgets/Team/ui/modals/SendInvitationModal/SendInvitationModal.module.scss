@@ -15,6 +15,7 @@
   justify-content: center;
   display: flex;
 }
+
 button {
   justify-content: flex-end !important;
 }
@@ -47,9 +48,7 @@ input {
   padding: 21px 20px;
   border: 1px solid var(--permission-border-color);
   background-color: var(--sidebar-bg);
-
 }
-
 
 select {
   background-color: var(--sidebar-bg);
@@ -60,4 +59,34 @@ select {
 
 .error {
   color: red;
+}
+
+.select::-webkit-scrollbar {
+  width: 0;
+}
+
+.dropdown-container {
+  border-radius: 20px;
+  border: none;
+}
+
+.dropdown-content::-webkit-scrollbar {
+  width: 0;
+}
+
+.dropdown-content {
+  height: max-content;
+}
+
+.SelectComponent {
+  border-radius: 30px;
+  overflow: visible;
+  border: 1px solid black;
+  padding: 20px;
+}
+
+.itemRenderer {
+  border-radius: 15px;
+  padding: 20px;
+  background-color: var(--sidebar-bg);
 }

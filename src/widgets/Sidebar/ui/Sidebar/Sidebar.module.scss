@@ -12,16 +12,16 @@
 .collapsed {
   display: flex;
   flex-direction: column;
-  border-radius: 0px 15px 0 0px;
+  border-radius: 0 15px 0 0;
   background-color: var(--sidebar-bg);
-  width: var(--sidebar-collapsed-width);
+  min-width: var(--sidebar-collapsed-width);
   transition: background-color 0.3s, width 0.3s;
   align-items: center;
 }
 
-.BurgerButton { 
+.BurgerButton {
   cursor: pointer;
-  display: flex; 
+  display: flex;
   width: 100%;
 }
 

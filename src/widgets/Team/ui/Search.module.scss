@@ -1,0 +1,35 @@
+.input {
+  border: 1px solid var(--permission-border-color);
+  border-radius: 10px;
+  padding: 8px 13px;
+  width: 100%;
+  transition: 0.2s ease-in;
+}
+
+.input:focus {
+  box-shadow: none;
+  outline: 1px solid var(--permission-border-color);
+}
+
+.inputWrapper {
+  width: 100%;
+  position: relative;
+}
+
+.inputWrapper input {
+  padding-right: 60px;
+}
+
+.inputWrapper button {
+  position: absolute;
+  width: 16px;
+  right: 13px;
+  top: 11px;
+  border: none;
+}
+
+.searchWrapper {
+  width: 100%;
+  display: flex;
+  align-items: center;
+}

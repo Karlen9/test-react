@@ -1,8 +1,7 @@
-@import url('https://fonts.cdnfonts.com/css/futura-pt');
-
+@import url("https://fonts.cdnfonts.com/css/futura-pt");
 
 :root {
-  --font-family-main: 'Futura PT', sans-serif;
+  --font-family-main: "Futura PT", sans-serif;
   --font-size-s: 16px;
   --font-line-s: 20px;
   --font-s: var(--font-size-s) / var(--font-line-s) / var(--font-family-main);
@@ -17,27 +16,25 @@
   --font-size-3xl: 72px;
   --font-size-4xl: 112px;
 
-
   // sizes
 
   --navbar-height: 70px;
   --sidebar-width: 244px;
   --sidebar-collapsed-width: 100px;
 
-  //colors
+  // colors
 
-  --primary-text-color: #424F5E;
-  --background-color: #EBEBF0;
-  --sidebar-bg: #F9FAFB;
-  --button-bg-color: #32C076;
+  --primary-text-color: #424f5e;
+  --background-color: #ebebf0;
+  --sidebar-bg: #f9fafb;
+  --button-bg-color: #32c076;
   --button-text-color: var(--sidebar-bg);
-  --border-color: #C4C4C403;
-  --secondary-text-color: #9494A0;
-  --permission-border-color: #C1C1CB;
-  --user-hover-background: #EFEFF6;
-  --admin-color: #5A57FF;
+  --border-color: #c4c4c403;
+  --secondary-text-color: #9494a0;
+  --permission-border-color: #c1c1cb;
+  --user-hover-background: #efeff6;
+  --admin-color: #5a57ff;
 
   // other
   --modal-border-radius: 25px;
 }
-

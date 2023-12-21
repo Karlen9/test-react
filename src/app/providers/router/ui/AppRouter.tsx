@@ -10,6 +10,7 @@ export const AppRouter = () => {
           {Object.values(routeConfig).map(({ element, path }) => (
             <Route key={path} element={element} path={path} />
           ))}
+          <Route path="/" element={<Navigate to="/team" replace={true} />} />
         </Routes>
       </Suspense>
     </div>

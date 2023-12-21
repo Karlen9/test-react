@@ -1,6 +1,7 @@
-import { AppLink } from 'shared/ui'
+import { AppLink, Button } from 'shared/ui'
 import cls from './NotFound.module.scss'
 import { SendInvitationModal, UserRemovedModal } from 'widgets/Team/ui/modals'
+import { ButtonTheme } from 'shared/ui/Button/Button'
 
 const NotFound = () => {
   return (
@@ -8,9 +9,9 @@ const NotFound = () => {
       <div className={cls.errorCode}>404</div>
       <div className={cls.errorText}>Страница не найдена</div>
       <div>
-        <AppLink to={'/team'} className="button-thin">
-          Вернуться на главную
-        </AppLink>
+        <Button theme={ButtonTheme.THIN}>
+          <AppLink to={'/team'}>Вернуться на главную</AppLink>
+        </Button>
       </div>
     </div>
   )

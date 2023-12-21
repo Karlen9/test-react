@@ -1,6 +1,5 @@
 .UserLayout {
   display: flex;
-  padding: 18px 0;
   column-gap: 11px;
   width: 100%;
   justify-content: space-between;
@@ -18,7 +17,7 @@
 
 .profilePicture img {
   width: 100%;
-  background-size: cover;
+  object-fit: cover;
   height: 100%;
   border-radius: 50%;
 }
@@ -33,12 +32,15 @@
   display: flex;
   column-gap: 11px;
   width: 100%;
+  align-items: center;
   justify-content: start;
 }
 
 .lowerBlock {
   display: flex;
   column-gap: 5px;
+  row-gap: 5px;
+  flex-wrap: wrap;
 }
 
 .name {
@@ -83,4 +85,10 @@
 
 .options {
   position: relative;
+}
+
+.isAuthorised {
+  color: var(--secondary-text-color);
+  font-size: 18px;
+  font-weight: 450;
 }

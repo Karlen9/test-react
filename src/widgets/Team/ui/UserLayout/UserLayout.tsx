@@ -11,7 +11,6 @@ import { classNames } from 'shared/lib/classNames/classNames'
 
 type UserLayoutProps = {
   user: User
-  key: string
   removeUser: (email: string) => void
 }
 
@@ -19,11 +18,7 @@ type PermissionProps = {
   permission: string
 }
 
-export const UserLayout: React.FC<UserLayoutProps> = ({
-  user,
-  key,
-  removeUser
-}) => {
+export const UserLayout: React.FC<UserLayoutProps> = ({ user, removeUser }) => {
   const [isOptionsOpen, setIsOptionsOpen] = useState(false)
   const [listenting, setListenting] = useState(false)
   const optionsRef = useRef<HTMLDivElement>(null)
@@ -31,6 +26,8 @@ export const UserLayout: React.FC<UserLayoutProps> = ({
   const onOptionsClick = () => {
     setIsOptionsOpen((prev) => !prev)
   }
+
+  const isAuthorised = user.name !== 'Пользователь'
 
   useEffect(
     onClickOutsideListener(
@@ -41,11 +38,16 @@ export const UserLayout: React.FC<UserLayoutProps> = ({
     )
   )
   return (
-    <div className={cls.UserLayout} key={key}>
+    <div className={cls.UserLayout}>
       <div className={cls.leftBlock}>
         <div className={cls.profilePicture}>
           {user.image ? (
-            <img src={user.image} alt="" />
+            <img
+              src={user.image}
+              loading="lazy"
+              key={user.image}
+              alt="picture"
+            />
           ) : (
             <div className={cls.noPicture}>
               <NoPicture />
@@ -55,12 +57,15 @@ export const UserLayout: React.FC<UserLayoutProps> = ({
         <div className={cls.mainInfo}>
           <div className={cls.upperBlock}>
             <div className={cls.name}>{user.name}</div>
-            <div className={cls.isAuthorised}></div>
+            {!isAuthorised && (
+              <div className={cls.isAuthorised}>Не авторизован</div>
+            )}
+
             <div className={cls.email}>{user.email}</div>
           </div>
           <div className={cls.lowerBlock}>
             {user.permissions.map((permission) => (
-              <div key={key}>
+              <div key={Math.random().toString()}>
                 <Permission key={permission} permission={permission} />
               </div>
             ))}

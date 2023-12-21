@@ -6,7 +6,7 @@
   font-family: var(--font-family-main);
   background: var(--main-background-color);
   color: var(--primary-text-color);
-  cursor: url('/src/shared/assets/icons/cursor.svg') 4 12;
+  cursor: url("/src/shared/assets/icons/cursor.svg") 4 12;
 }
 
 .content-page {
@@ -21,5 +21,35 @@
   background-color: var(--sidebar-bg);
   border-radius: 15px;
   padding: 40px 64px;
+  border: 1px solid var(--permission-border-color);
+  box-shadow: -30px 30px 50px 0 rgb(28 28 30 / 10%);
 }
 
+.select::-webkit-scrollbar {
+  width: 0;
+}
+
+.dropdown-container {
+  border-radius: 20px;
+  border: none;
+}
+
+.rmsc {
+  border-radius: 20px !important;
+}
+
+.dropdown-content::-webkit-scrollbar {
+  width: 0;
+}
+
+.dropdown-content {
+  height: max-content;
+}
+
+.multi-select {
+  border-radius: 20px;
+}
+
+.dropdown-heading-value {
+  overflow: auto;
+}
