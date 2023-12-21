@@ -41,7 +41,7 @@ const MainPage = () => {
       <div className={isModal ? cls.dark : ''}></div>
       <div className={cls.MainPage}>
         <div className={cls.pageWrapper}>
-          <TeamLayout setIsModal={setIsModal} users={users} />
+          <TeamLayout users={users} />
         </div>
       </div>
     </div>

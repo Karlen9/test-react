@@ -42,12 +42,7 @@ export const UserLayout: React.FC<UserLayoutProps> = ({ user, removeUser }) => {
       <div className={cls.leftBlock}>
         <div className={cls.profilePicture}>
           {user.image ? (
-            <img
-              src={user.image}
-              loading="lazy"
-              key={user.image}
-              alt="picture"
-            />
+            <img src={user.image} loading="lazy" key={user.image} alt="" />
           ) : (
             <div className={cls.noPicture}>
               <NoPicture />
@@ -78,7 +73,11 @@ export const UserLayout: React.FC<UserLayoutProps> = ({ user, removeUser }) => {
           <OptionsIcon />
         </Button>
         {isOptionsOpen && (
-          <UserOptions email={user.email} removeUser={removeUser} />
+          <UserOptions
+            email={user.email}
+            permissions={user.permissions}
+            removeUser={removeUser}
+          />
         )}
       </div>
     </div>

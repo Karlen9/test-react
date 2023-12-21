@@ -16,11 +16,28 @@
   --font-size-3xl: 72px;
   --font-size-4xl: 112px;
 
+
+  --font-mobile-size-s: 12px;
+  --font-mobile-line-s: 12px;
+  --font-mobile-s: var(--font-mobile-size-s) / var(--font-mobile-line-s) / var(--font-family-main);
+
+  --font-mobile-size-m: 14px;
+  --font-mobile-line-m: 20px;
+  --font-mobile-m: var(--font-mobile-size-m) / var(--font-mobile-line-m) / var(--font-family-main);
+
+
+
+  --font-mobile-size-l: 16px;
+  --font-mobile-line-l: 20px;
+  --font-mobile-l: var(--font-mobile-size-l) / var(--font-mobile-line-l) / var(--font-family-main);
+
+
   // sizes
 
   --navbar-height: 70px;
   --sidebar-width: 244px;
   --sidebar-collapsed-width: 100px;
+  --mobile-screen-size: 650px;
 
   // colors
 

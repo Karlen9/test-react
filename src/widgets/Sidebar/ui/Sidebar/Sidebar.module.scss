@@ -6,17 +6,24 @@
   border-radius: 0 0 15px 15px;
   padding-top: 25px;
   background-color: var(--sidebar-bg);
+  min-width: var(--sidebar-collapsed-width);
   row-gap: 26px;
+
 }
 
-.collapsed {
-  display: flex;
+.mobileSidebar {
+  padding: 50px 15px 0;
+  display: flex; 
   flex-direction: column;
-  border-radius: 0 15px 0 0;
+  row-gap: 25px;
+  transition: 0.3s all;
+  position: absolute;
+  z-index: 999;
+  width: var(--sidebar-width);
   background-color: var(--sidebar-bg);
-  min-width: var(--sidebar-collapsed-width);
-  transition: background-color 0.3s, width 0.3s;
-  align-items: center;
+  height: 100vh;
+  border-right: 1px solid var(--permission-border-color);
+  -webkit-transition: all 0.25s;
 }
 
 .BurgerButton {
@@ -28,12 +35,26 @@
 .sidebarMenu {
   display: flex;
   flex-direction: column;
-  row-gap: 30px;
+  row-gap: 30px; 
+}
+
+.collapsedMenu {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  row-gap: 26px;
 }
 
 .Logo {
   display: flex;
   justify-content: center;
+}
+
+.burgerMobile {
+  display: flex;
+  justify-content: flex-start;
+  cursor: pointer;
+  width: 100%;
 }
 
 .SidebarContainer {
@@ -50,9 +71,8 @@
 
 .exitButton {
   display: flex;
-  justify-content: center;
+
   background-color: transparent;
-  width: 19px;
 }
 
 .pictureWrapper {
@@ -60,3 +80,30 @@
   width: 60px;
   height: 60px;
 }
+
+
+.routeWrapper {
+  display: flex;
+  align-items: center;
+  column-gap: 17px;
+}
+
+.iconWrapper {
+  min-width: 25px;
+  display: flex;
+  justify-content: center;
+
+}
+
+.routeName {
+  font-size: var(--font-size-m)
+}
+
+.exitMobile {
+  width: 100%;
+  justify-content: start;
+  color: #FF9E90;
+  display: flex;
+  column-gap: 16px;
+}
+

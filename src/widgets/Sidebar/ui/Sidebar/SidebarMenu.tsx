@@ -8,46 +8,109 @@ import Blog from 'shared/assets/icons/blog.svg'
 import Exchange from 'shared/assets/icons/exchange-rate.svg'
 import Exit from 'shared/assets/icons/exit.svg'
 import cls from './Sidebar.module.scss'
-import { AppRoutes } from 'shared/config/routeConfig/routeConfig'
+import { AppRoutes, RouteNames } from 'shared/config/routeConfig/routeConfig'
 import { AppLink } from 'shared/ui/AppLink/AppLink'
 import { Button } from 'shared/ui'
 import { ButtonTheme } from 'shared/ui/Button/Button'
+import { AppRouter } from 'app/providers/router'
+import { useScreenSize } from 'shared/hooks/useScreenSize'
 
 type SidebarMenuProps = {
   collapsed: boolean
 }
 
 export const SidebarMenu: React.FC<SidebarMenuProps> = ({ collapsed }) => {
+  const { isMobile } = useScreenSize()
   return (
-    <div className={cls.sidebarMenu}>
+    <div className={collapsed ? cls.sidebarMenu : cls.collapsedMenu}>
       <AppLink to={`/${AppRoutes.ANALYTIC}`}>
-        <Analytic />
+        <div className={cls.routeWrapper}>
+          <div className={cls.iconWrapper}>
+            <Analytic />
+          </div>
+          {isMobile && !collapsed && (
+            <div className={cls.routeName}>{RouteNames.ANALYTIC}</div>
+          )}
+        </div>
       </AppLink>
       <AppLink to={`/${AppRoutes.PROFILE}`}>
-        <Profile />
+        <div className={cls.routeWrapper}>
+          <div className={cls.iconWrapper}>
+            <Profile />
+          </div>
+          {isMobile && !collapsed && (
+            <div className={cls.routeName}>{RouteNames.PROFILE}</div>
+          )}
+        </div>
       </AppLink>
       <AppLink to={`/${AppRoutes.MODERATION}`}>
-        <Moderation />
+        <div className={cls.routeWrapper}>
+          <div className={cls.iconWrapper}>
+            <Moderation />
+          </div>
+          {isMobile && !collapsed && (
+            <div className={cls.routeName}>{RouteNames.MODERATION}</div>
+          )}
+        </div>
       </AppLink>
       <AppLink to={`/${AppRoutes.CHATS}`}>
-        <Chats />
+        <div className={cls.routeWrapper}>
+          <div className={cls.iconWrapper}>
+            <Chats />
+          </div>
+          {isMobile && !collapsed && (
+            <div className={cls.routeName}>{RouteNames.CHATS}</div>
+          )}
+        </div>
       </AppLink>
       <AppLink to={`/${AppRoutes.BANNERS}`}>
-        <Banners />
+        <div className={cls.routeWrapper}>
+          <div className={cls.iconWrapper}>
+            <Banners />
+          </div>
+          {isMobile && !collapsed && (
+            <div className={cls.routeName}>{RouteNames.BANNERS}</div>
+          )}
+        </div>
       </AppLink>
       <AppLink to={`/${AppRoutes.TEAM}`}>
-        <Team />
+        <div className={cls.routeWrapper}>
+          <div className={cls.iconWrapper}>
+            <Team />
+          </div>
+          {isMobile && !collapsed && (
+            <div className={cls.routeName}>{RouteNames.TEAM}</div>
+          )}
+        </div>
       </AppLink>
       <AppLink to={`/${AppRoutes.BLOG}`}>
-        <Blog />
+        <div className={cls.routeWrapper}>
+          <div className={cls.iconWrapper}>
+            <Blog />
+          </div>
+          {isMobile && !collapsed && (
+            <div className={cls.routeName}>{RouteNames.BLOG}</div>
+          )}
+        </div>
       </AppLink>
       <AppLink to={`/${AppRoutes.EXCHANGE}`}>
-        <Exchange />
+        <div className={cls.routeWrapper}>
+          <div className={cls.iconWrapper}>
+            <Exchange />
+          </div>
+          {isMobile && !collapsed && (
+            <div className={cls.routeName}>{RouteNames.EXCHANGE}</div>
+          )}
+        </div>
       </AppLink>
-      <div className={cls.buttonWrapper}>
-        <button className={cls.exitButton}>
-          <Exit />
-        </button>
+
+      <div className={!isMobile ? cls.buttonWrapper : cls.exitMobile}>
+        <AppLink to={''} className={cls.exitButton}>
+          <div className={cls.iconWrapper}>
+            <Exit />
+          </div>
+        </AppLink>
+        {isMobile && <div className={cls.routeName}>Выйти</div>}
       </div>
     </div>
   )

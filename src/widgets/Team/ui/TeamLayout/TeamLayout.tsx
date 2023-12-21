@@ -8,22 +8,28 @@ import { SendInvitationModal, UserRemovedModal } from '../modals'
 import { User } from 'shared/models/User'
 import React from 'react'
 import { Search } from '../Search'
+import { useScreenSize } from 'shared/hooks/useScreenSize'
+import BurgerIcon from 'shared/assets/icons/burger.svg'
+import { Sidebar } from 'widgets/Sidebar'
+import { useStore } from 'shared'
 
 type TeamLayoutProps = {
-  setIsModal: (val: boolean) => void
   users: User[]
 }
 
-export const TeamLayout: React.FC<TeamLayoutProps> = ({ setIsModal }) => {
+export const TeamLayout: React.FC<TeamLayoutProps> = () => {
   const [isInviteUserModalOpen, setIsInviteUserModalOpen] = useState(false)
   const [isRemoveModalOpen, setIsRemoveModalOpen] = useState(false)
   const [isSearchOpen, setIsSearchOpen] = useState(false)
   const [allUsers, setAllUsers] = useState<User[]>(users)
   const [searchValue, setSearchValue] = useState('')
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false)
+  const { collapsed, setCollapsed } = useStore()
   const onAddUser = () => {
     setIsInviteUserModalOpen(true)
-    setIsModal(true)
   }
+
+  const { isMobile } = useScreenSize()
 
   useEffect(() => {
     const filteredUsers = allUsers.filter((user) =>
@@ -43,14 +49,25 @@ export const TeamLayout: React.FC<TeamLayoutProps> = ({ setIsModal }) => {
     setIsSearchOpen(true)
   }
 
+  const handleOpenSidebar = () => {
+    setCollapsed(false)
+  }
+
   return (
     <>
       <div className={cls.TeamLayout}>
         <div className={cls.header}>
-          <div className={cls.leftBlock}>Команда</div>
+          <div className={cls.leftBlock}>
+            {isMobile && (
+              <div className={cls.burgerButton} onClick={handleOpenSidebar}>
+                <BurgerIcon />
+              </div>
+            )}
+            <div>Команда</div>
+          </div>
           <div className={cls.rightBlock}>
             <Search
-              isOpen={isSearchOpen}
+              isOpen={isSearchOpen || isMobile}
               onOpenSearch={onOpenSearch}
               searchValue={searchValue}
               setSearchValue={setSearchValue}
@@ -74,6 +91,12 @@ export const TeamLayout: React.FC<TeamLayoutProps> = ({ setIsModal }) => {
           )}
         </div>
       </div>
+
+      {isSidebarOpen && (
+        <div>
+          <Sidebar />
+        </div>
+      )}
       {isInviteUserModalOpen && (
         <SendInvitationModal
           setIsOpen={setIsInviteUserModalOpen}

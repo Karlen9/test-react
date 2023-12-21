@@ -14,6 +14,17 @@ export enum AppRoutes {
   NOT_FOUND = 'not_found'
 }
 
+export enum RouteNames {
+  ANALYTIC = 'Аналитика',
+  PROFILE = 'Профиль',
+  MODERATION = 'Модерация',
+  CHATS = 'Чаты',
+  BANNERS = 'Баннеры',
+  TEAM = 'Команда',
+  BLOG = 'Блог',
+  EXCHANGE = 'Обмен валют'
+}
+
 export const RoutePath: Record<AppRoutes, string> = {
   [AppRoutes.ANALYTIC]: '/analytic',
   [AppRoutes.PROFILE]: '/profile',

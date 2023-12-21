@@ -1,28 +1,49 @@
 import { classNames } from 'shared/lib/classNames/classNames'
 import cls from './Sidebar.module.scss'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { SidebarMenu } from './SidebarMenu'
 import Logo from 'shared/assets/icons/logo.svg'
 import profilePic from 'shared/assets/images/profile-pic.png'
+import { useScreenSize } from 'shared/hooks/useScreenSize'
+import { useStore } from 'shared'
+import BurgerIcon from 'shared/assets/icons/burger.svg'
+import { Button, ButtonTheme } from 'shared/ui/Button/Button'
 
 export const Sidebar = () => {
-  const [collapsed, setCollapsed] = useState(true)
-
-  const onToggle = () => {
-    setCollapsed((prev) => !prev)
-  }
+  const { isMobile } = useScreenSize()
+  const { collapsed, setCollapsed } = useStore()
 
   return (
-    <div
-      className={classNames(cls.Sidebar, { [cls.collapsed]: collapsed }, [])}
-    >
-      <div className={cls.Logo}>
-        <Logo />
-      </div>
-      <div className={cls.pictureWrapper}>
-        <img src={profilePic} alt="" />
-      </div>
-      <SidebarMenu collapsed={collapsed} />
-    </div>
+    <>
+      {isMobile && !collapsed && (
+        <div className={cls.mobileSidebar}>
+          <div className={cls.burgerMobile} onClick={() => setCollapsed(true)}>
+            <BurgerIcon />
+          </div>
+          <div className={cls.pictureWrapper}>
+            <img src={profilePic} alt="" />
+          </div>
+          <SidebarMenu collapsed={collapsed} />
+        </div>
+      )}
+
+      {!isMobile && (
+        <div
+          className={classNames(
+            cls.Sidebar,
+            { [cls.collapsed]: collapsed },
+            []
+          )}
+        >
+          <div className={cls.Logo}>
+            <Logo />
+          </div>
+          <div className={cls.pictureWrapper}>
+            <img src={profilePic} alt="" />
+          </div>
+          <SidebarMenu collapsed={collapsed} />
+        </div>
+      )}
+    </>
   )
 }
