@@ -52,3 +52,10 @@
 .icon_down_dir {
   top: 40% !important;
 }
+
+@media (max-width: 650px) {
+  .modal {
+    padding: 20px 34px;
+
+  }
+}

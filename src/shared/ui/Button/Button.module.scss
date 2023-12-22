@@ -56,3 +56,10 @@ button {
   display: flex;
   align-items: center;
 }
+
+
+@media (max-width: 650px) {
+  .regular {
+    padding: 10px;
+  }
+}

@@ -8,3 +8,19 @@
   transform: translate(-55%, 0);
   top: 30%;
 }
+
+.header {
+  font-size: 22px;
+  line-height: 120%;
+  color: var(--primary-text-color);
+  font-weight: 600;
+  text-align: center;
+  padding: 0 50px;
+}
+
+
+@media (max-width: 650px) {
+  .UserEditModal {
+    row-gap: 10px;
+  }
+}
