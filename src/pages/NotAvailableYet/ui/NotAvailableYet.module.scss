@@ -3,7 +3,10 @@
   height: 100vh;
   display: flex;
   align-items: center;
+  font-size: var(--font-size-l);
   width: 100%;
   justify-content: center;
   color: var(--primary-text-color);
+  flex-direction: column;
+  row-gap: 20px;
 }

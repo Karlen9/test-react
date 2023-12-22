@@ -6,16 +6,26 @@ type UserOptionsProps = {
   removeUser: (email: string) => void
   email: string
   permissions: string[]
+  setEditingUser: (val: string) => void
 }
 
 export const UserOptions: React.FC<UserOptionsProps> = ({
   removeUser,
   email,
-  permissions
+  permissions,
+  setEditingUser
 }) => {
+  const onOpenModal = () => {
+    setEditingUser(email)
+  }
+
   return (
     <div className={cls.UserOptions}>
-      <Button theme={ButtonTheme.ICON} className={cls.option}>
+      <Button
+        theme={ButtonTheme.ICON}
+        className={cls.option}
+        onClick={onOpenModal}
+      >
         Изменить права доступа
       </Button>
       <Button theme={ButtonTheme.ICON} className={cls.option}>

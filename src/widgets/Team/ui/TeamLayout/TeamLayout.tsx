@@ -3,14 +3,13 @@ import users from '../../../../source.json'
 import { Button } from 'shared/ui'
 import { ButtonTheme } from 'shared/ui/Button/Button'
 import { UserLayout } from 'widgets/Team'
-import { useEffect, useState } from 'react'
-import { SendInvitationModal, UserRemovedModal } from '../modals'
+import { useState } from 'react'
+import { SendInvitationModal, UserEditModal, UserRemovedModal } from '../modals'
 import { User } from 'shared/models/User'
 import React from 'react'
 import { Search } from '../Search'
 import { useScreenSize } from 'shared/hooks/useScreenSize'
 import BurgerIcon from 'shared/assets/icons/burger.svg'
-import { Sidebar } from 'widgets/Sidebar'
 import { useStore } from 'shared'
 
 type TeamLayoutProps = {
@@ -23,21 +22,17 @@ export const TeamLayout: React.FC<TeamLayoutProps> = () => {
   const [isSearchOpen, setIsSearchOpen] = useState(false)
   const [allUsers, setAllUsers] = useState<User[]>(users)
   const [searchValue, setSearchValue] = useState('')
-  const [isSidebarOpen, setIsSidebarOpen] = useState(false)
-  const { collapsed, setCollapsed } = useStore()
+  const [editingUser, setEditingUser] = useState('')
+  const { setCollapsed } = useStore()
   const onAddUser = () => {
     setIsInviteUserModalOpen(true)
   }
 
   const { isMobile } = useScreenSize()
 
-  useEffect(() => {
-    const filteredUsers = allUsers.filter((user) =>
-      user.email.includes(searchValue)
-    )
-    setAllUsers(filteredUsers)
-    console.log(searchValue)
-  }, [searchValue])
+  const filteredUsers = allUsers.filter((user) => {
+    return user.email.toLowerCase().includes(searchValue.toLowerCase())
+  })
 
   const removeUser = (email: string) => {
     const newArray = allUsers.filter((user) => user.email !== email)
@@ -45,8 +40,11 @@ export const TeamLayout: React.FC<TeamLayoutProps> = () => {
     setIsRemoveModalOpen(true)
   }
 
-  const onOpenSearch = () => {
-    setIsSearchOpen(true)
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchValue(e.target.value)
+    if (e.target.value !== '') {
+      setAllUsers(filteredUsers)
+    }
   }
 
   const handleOpenSidebar = () => {
@@ -68,9 +66,9 @@ export const TeamLayout: React.FC<TeamLayoutProps> = () => {
           <div className={cls.rightBlock}>
             <Search
               isOpen={isSearchOpen || isMobile}
-              onOpenSearch={onOpenSearch}
+              setIsSearchOpen={setIsSearchOpen}
               searchValue={searchValue}
-              setSearchValue={setSearchValue}
+              handleChange={handleChange}
             />
             <div className={cls.buttonWrapper}>
               <Button theme={ButtonTheme.THIN} onClick={onAddUser}>
@@ -83,7 +81,11 @@ export const TeamLayout: React.FC<TeamLayoutProps> = () => {
           {allUsers.length ? (
             allUsers.map((user) => (
               <React.Fragment key={Math.random().toString()}>
-                <UserLayout user={user} removeUser={removeUser} />
+                <UserLayout
+                  user={user}
+                  removeUser={removeUser}
+                  setEditingUser={setEditingUser}
+                />
               </React.Fragment>
             ))
           ) : (
@@ -91,12 +93,6 @@ export const TeamLayout: React.FC<TeamLayoutProps> = () => {
           )}
         </div>
       </div>
-
-      {isSidebarOpen && (
-        <div>
-          <Sidebar />
-        </div>
-      )}
       {isInviteUserModalOpen && (
         <SendInvitationModal
           setIsOpen={setIsInviteUserModalOpen}
@@ -106,6 +102,14 @@ export const TeamLayout: React.FC<TeamLayoutProps> = () => {
       )}
       {isRemoveModalOpen && (
         <UserRemovedModal setIsRemoveModalOpen={setIsRemoveModalOpen} />
+      )}
+      {editingUser && (
+        <UserEditModal
+          editingUser={allUsers.find((user) => user.email === editingUser)}
+          setEditingUser={setEditingUser}
+          allUsers={allUsers}
+          setAllUsers={setAllUsers}
+        />
       )}
     </>
   )

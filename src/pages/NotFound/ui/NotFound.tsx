@@ -1,6 +1,5 @@
 import { AppLink, Button } from 'shared/ui'
 import cls from './NotFound.module.scss'
-import { SendInvitationModal, UserRemovedModal } from 'widgets/Team/ui/modals'
 import { ButtonTheme } from 'shared/ui/Button/Button'
 
 const NotFound = () => {

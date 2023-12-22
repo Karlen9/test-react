@@ -5,7 +5,7 @@ import { ButtonTheme } from 'shared/ui/Button/Button'
 import { classNames } from 'shared/lib/classNames/classNames'
 import { User } from 'shared/models/User'
 import { useState } from 'react'
-import { MultiSelect, Option } from 'react-multi-select-component'
+import { CustomSelect } from 'shared/ui/CustomSelect/CustomSelect'
 
 type SendInvitationModalProps = {
   setIsOpen: (val: boolean) => void
@@ -13,24 +13,16 @@ type SendInvitationModalProps = {
   setAllUsers: (val: User[]) => void
 }
 
-const options = [
-  { value: 'модерация', label: 'Модерация объявлений' },
-  { value: 'блог', label: 'Блог' },
-  { value: 'техподдержка', label: 'Тех. поддержка' },
-  { value: 'обращения', label: 'Обращения клиентов' },
-  { value: 'аналитика', label: 'Аналитика' },
-  { value: 'акции', label: 'Акции' }
-]
-
 export const SendInvitationModal: React.FC<SendInvitationModalProps> = ({
   setIsOpen,
   allUsers,
   setAllUsers
 }) => {
-  const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [error, setError] = useState('')
-  const [selectedPermissions, setSelectedPermissions] = useState<Option[]>([])
+  const [selectedPermissions, setSelectedPermissions] = useState<
+    { name: string; id: number }[]
+  >([])
   const onClose = () => {
     setIsOpen(false)
   }
@@ -41,20 +33,20 @@ export const SendInvitationModal: React.FC<SendInvitationModalProps> = ({
 
   const sendInvitation = () => {
     if (!isValidEmail(email)) return setError('Неверный формат почты')
+    if (allUsers.some((user) => user.email === email))
+      return setError('Такой пользоватнль уже существует')
     const copiedUsers = [...allUsers]
     setAllUsers([
       {
         name: 'Пользователь',
         email: email,
-        permissions: [...selectedPermissions.map((e) => e.label)],
+        permissions: selectedPermissions.map((item) => item.name),
         image: ''
       },
       ...copiedUsers
     ])
     setIsOpen(false)
   }
-
-  console.log(selectedPermissions)
 
   return (
     <div className={classNames(cls.SendInvitationModal, {}, ['modal'])}>
@@ -75,65 +67,16 @@ export const SendInvitationModal: React.FC<SendInvitationModalProps> = ({
           placeholder="Email"
           className="email"
         />
-        <MultiSelect
-          options={options}
-          value={selectedPermissions}
-          onChange={setSelectedPermissions}
-          labelledBy="Select"
-          overrideStrings={{
-            selectAll: 'Все',
-            selectSomeItems: 'Выберите права доступа',
-            allItemsAreSelected: 'Все права выбраны'
-          }}
-          className={cls.select}
-          // ItemRenderer={(option, onClick, checked) => (
-          //   <DropDownOption
-          //     checked={checked}
-          //     option={option}
-          //     onClick={onClick}
-          //   />
-          // )}
-          // valueRenderer={(selected, options) => (
-          //   <DropDownHeader selected={selected} options={options} />
-          // )}
-          disableSearch
+
+        <CustomSelect
+          selectedPermissions={selectedPermissions}
+          setSelectedPermissions={setSelectedPermissions}
         />
+
         <Button theme={ButtonTheme.REGULAR} onClick={sendInvitation}>
           Отправить приглашение
         </Button>
       </div>
-    </div>
-  )
-}
-
-const DropDownHeader = ({
-  selected,
-  options
-}: {
-  selected: Option[]
-  options: Option[]
-}) => {
-  return <div className={cls.SelectComponent}></div>
-}
-
-const DropDownOption = ({
-  checked,
-  option,
-  onClick
-}: {
-  checked: boolean
-  option: Option
-  onClick: () => void
-}) => {
-  return (
-    <div className={cls.itemRenderer}>
-      <input
-        type="checkbox"
-        onChange={onClick}
-        checked={checked}
-        tabIndex={-1}
-      />
-      <span>{option.label}</span>
     </div>
   )
 }

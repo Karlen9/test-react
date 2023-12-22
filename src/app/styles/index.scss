@@ -26,31 +26,29 @@
   box-shadow: -30px 30px 50px 0 rgb(28 28 30 / 10%);
 }
 
-.select::-webkit-scrollbar {
-  width: 0;
+.searchBox {
+  padding: 10px;
+  width: 100%;
 }
 
-.dropdown-container {
-  border-radius: 20px;
-  border: none;
+.searchWrapper {
+  border-radius: 15px !important;
+  padding: 10px !important;
+  color: var(--secondary-text-color);
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 20px; 
 }
 
-.rmsc {
-  border-radius: 20px !important;
+.optionListContainer {
+  border-radius: 15px !important;
+
 }
 
-.dropdown-content::-webkit-scrollbar {
-  width: 0;
+.optionContainer {
+  border: none !important;
 }
 
-.dropdown-content {
-  height: max-content;
-}
-
-.multi-select {
-  border-radius: 20px;
-}
-
-.dropdown-heading-value {
-  overflow: auto;
+.icon_down_dir {
+  top: 40% !important;
 }

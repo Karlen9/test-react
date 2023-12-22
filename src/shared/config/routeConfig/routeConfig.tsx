@@ -10,8 +10,7 @@ export enum AppRoutes {
   BANNERS = 'banners',
   TEAM = 'team',
   BLOG = 'blog',
-  EXCHANGE = 'exchange',
-  NOT_FOUND = 'not_found'
+  EXCHANGE = 'exchange'
 }
 
 export enum RouteNames {
@@ -33,8 +32,7 @@ export const RoutePath: Record<AppRoutes, string> = {
   [AppRoutes.BANNERS]: '/banners',
   [AppRoutes.TEAM]: '/team',
   [AppRoutes.BLOG]: '/blog',
-  [AppRoutes.EXCHANGE]: '/exchange',
-  [AppRoutes.NOT_FOUND]: '/not_found'
+  [AppRoutes.EXCHANGE]: '/exchange'
 }
 
 export const routeConfig: Record<AppRoutes, RouteProps> = {
@@ -69,9 +67,5 @@ export const routeConfig: Record<AppRoutes, RouteProps> = {
   [AppRoutes.EXCHANGE]: {
     path: RoutePath.exchange,
     element: <NotAvailableYet />
-  },
-  [AppRoutes.NOT_FOUND]: {
-    path: '*',
-    element: <NotFound />
   }
 }

@@ -1,9 +1,10 @@
 button {
   border: none;
-  background-color: var(--button-bg-color);
   white-space: nowrap;
   cursor: pointer;
 }
+
+
 
 .regular {
   padding: 21px;
@@ -12,11 +13,12 @@ button {
   font-size: 20px;
   border-radius: 15px;
   font-weight: 450;
+  background-color: var(--button-bg-color);
+
 }
 
 .thin {
   cursor: pointer;
-  background-color: var(--button-bg-color);
   border: none;
   color: var(--button-text-color);
   padding: 10px 20px;
@@ -25,6 +27,24 @@ button {
   line-height: 20px;
   font-weight: 450;
   text-align: center;
+  transition: 0.2s ease;
+  background-color: var(--button-bg-color);
+
+
+}
+
+.thin:hover {
+  background-color: var(--sidebar-bg);
+  outline: 1px solid var(--button-bg-color);
+  color:var(--button-bg-color);
+  transition: 0.2s ease;
+}
+
+.regular:hover {
+  background-color: var(--sidebar-bg);
+  outline: 1px solid var(--button-bg-color);
+  color:var(--button-bg-color);
+  transition: 0.2s ease;
 }
 
 .icon {

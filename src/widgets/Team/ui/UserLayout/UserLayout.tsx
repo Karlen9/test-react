@@ -12,13 +12,18 @@ import { classNames } from 'shared/lib/classNames/classNames'
 type UserLayoutProps = {
   user: User
   removeUser: (email: string) => void
+  setEditingUser: (val: string) => void
 }
 
 type PermissionProps = {
   permission: string
 }
 
-export const UserLayout: React.FC<UserLayoutProps> = ({ user, removeUser }) => {
+export const UserLayout: React.FC<UserLayoutProps> = ({
+  user,
+  removeUser,
+  setEditingUser
+}) => {
   const [isOptionsOpen, setIsOptionsOpen] = useState(false)
   const [listenting, setListenting] = useState(false)
   const optionsRef = useRef<HTMLDivElement>(null)
@@ -69,7 +74,11 @@ export const UserLayout: React.FC<UserLayoutProps> = ({ user, removeUser }) => {
       </div>
 
       <div className={cls.options} ref={optionsRef}>
-        <Button theme={ButtonTheme.ICON} onClick={onOptionsClick}>
+        <Button
+          theme={ButtonTheme.ICON}
+          onClick={onOptionsClick}
+          className={cls.optionsButton}
+        >
           <OptionsIcon />
         </Button>
         {isOptionsOpen && (
@@ -77,6 +86,7 @@ export const UserLayout: React.FC<UserLayoutProps> = ({ user, removeUser }) => {
             email={user.email}
             permissions={user.permissions}
             removeUser={removeUser}
+            setEditingUser={setEditingUser}
           />
         )}
       </div>

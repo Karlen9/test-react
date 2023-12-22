@@ -11,6 +11,10 @@ export const AppRouter = () => {
             <Route key={path} element={element} path={path} />
           ))}
           <Route path="/" element={<Navigate to="/team" replace={true} />} />
+          <Route
+            path="*"
+            element={<Navigate to="/not_found" replace={true} />}
+          />
         </Routes>
       </Suspense>
     </div>

@@ -1,0 +1,10 @@
+.UserEditModal {
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+  border-radius: var(--modal-border-radius);
+  position: absolute;
+  left: 55%;
+  transform: translate(-55%, 0);
+  top: 30%;
+}
