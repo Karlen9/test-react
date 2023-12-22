@@ -1,6 +1,6 @@
 import cls from './MainPage.module.scss'
 import { TeamLayout } from 'widgets/Team'
-import { users } from 'shared/lib/contants/constants'
+import { users } from 'shared/lib/constants/constants'
 
 const MainPage = () => {
   return (

@@ -28,12 +28,17 @@ export const Search: React.FC<SearchProps> = (props) => {
           <Button
             theme={ButtonTheme.ICON}
             onClick={() => setIsSearchOpen(false)}
+            className={cls.searchIcon}
           >
             <SearchIcon />
           </Button>
         </div>
       ) : (
-        <Button theme={ButtonTheme.ICON} onClick={() => setIsSearchOpen(true)}>
+        <Button
+          theme={ButtonTheme.ICON}
+          className={cls.singleSearch}
+          onClick={() => setIsSearchOpen(true)}
+        >
           <SearchIcon />
         </Button>
       )}

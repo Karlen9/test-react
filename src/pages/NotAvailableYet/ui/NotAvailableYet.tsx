@@ -5,7 +5,7 @@ import cls from './NotAvailableYet.module.scss'
 const NotAvailableYet = () => {
   return (
     <div className={cls.NotAvailableYet}>
-      Not available yet
+      Эта страница недоступна
       <div>
         <Button theme={ButtonTheme.THIN}>
           <AppLink to={'/team'}>Вернуться на главную</AppLink>

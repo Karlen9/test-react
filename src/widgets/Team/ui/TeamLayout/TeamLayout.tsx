@@ -3,7 +3,7 @@ import users from '../../../../source.json'
 import { Button } from 'shared/ui'
 import { ButtonTheme } from 'shared/ui/Button/Button'
 import { UserLayout } from 'widgets/Team'
-import { useState } from 'react'
+import { useMemo, useState } from 'react'
 import { SendInvitationModal, UserEditModal, UserRemovedModal } from '../modals'
 import { User } from 'shared/models/User'
 import React from 'react'
@@ -30,9 +30,11 @@ export const TeamLayout: React.FC<TeamLayoutProps> = () => {
 
   const { isMobile } = useScreenSize()
 
-  const filteredUsers = allUsers.filter((user) => {
-    return user.email.toLowerCase().includes(searchValue.toLowerCase())
-  })
+  const filteredUsers = useMemo(() => {
+    return allUsers.filter((user) => {
+      return user.email.toLowerCase().includes(searchValue.toLowerCase())
+    })
+  }, [searchValue])
 
   const removeUser = (email: string) => {
     const newArray = allUsers.filter((user) => user.email !== email)
@@ -42,9 +44,6 @@ export const TeamLayout: React.FC<TeamLayoutProps> = () => {
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchValue(e.target.value)
-    if (e.target.value !== '') {
-      setAllUsers(filteredUsers)
-    }
   }
 
   const handleOpenSidebar = () => {
@@ -78,8 +77,8 @@ export const TeamLayout: React.FC<TeamLayoutProps> = () => {
           </div>
         </div>
         <div className={cls.usersWrapper}>
-          {allUsers.length ? (
-            allUsers.map((user) => (
+          {filteredUsers.length ? (
+            filteredUsers.map((user) => (
               <React.Fragment key={Math.random().toString()}>
                 <UserLayout
                   user={user}
