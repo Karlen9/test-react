@@ -5,9 +5,10 @@ const options = [
   { id: 1, name: 'Модерация объявлений' },
   { id: 2, name: 'Блог' },
   { id: 3, name: 'Тех. поддержка' },
-  { id: 4, name: 'Обращения клиентов' },
+  { id: 4, name: 'Обращение клиентов' },
   { id: 5, name: 'Аналитика' },
-  { id: 6, name: 'Акции' }
+  { id: 6, name: 'Акции' },
+  { id: 7, name: 'Администратор'}
 ]
 
 type CustomSelectProps = {
@@ -33,6 +34,7 @@ export const CustomSelect: React.FC<CustomSelectProps> = ({
       customArrow={<Arrow />}
       avoidHighlightFirstOption
       onSelect={(selectedList) => onSelect(selectedList)}
+      onRemove={(selectedList) => onSelect(selectedList)}
     />
   )
 }

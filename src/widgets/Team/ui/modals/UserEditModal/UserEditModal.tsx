@@ -4,20 +4,24 @@ import { User } from 'shared/models/User'
 import { Button } from 'shared/ui'
 import { ButtonTheme } from 'shared/ui/Button/Button'
 import { CustomSelect } from 'shared/ui/CustomSelect/CustomSelect'
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 
 type UserEditModalProps = {
   editingUser?: User
   setEditingUser: (email: string) => void
   allUsers: User[]
   setAllUsers: (users: User[]) => void
+  selectedPermissions: { name: string; id: number }[]
+  setSelectedPermissions: (val: { name: string; id: number }[]) => void
 }
 
 export const UserEditModal: React.FC<UserEditModalProps> = ({
   editingUser,
   setEditingUser,
   allUsers,
-  setAllUsers
+  setAllUsers,
+  selectedPermissions,
+  setSelectedPermissions
 }) => {
   const onClose = () => {
     setEditingUser('')
@@ -32,23 +36,19 @@ export const UserEditModal: React.FC<UserEditModalProps> = ({
     )
   }, [])
 
-  const [selectedPermissions, setSelectedPermissions] = useState<
-    { name: string; id: number }[]
-  >([])
   const onApplyChanges = () => {
     setAllUsers(
-      allUsers.map((user) => {
-        if (user.email === editingUser?.email) {
-          user.permissions = selectedPermissions.map((item) => item.name)
-        }
-        return user
-      })
+      allUsers.map((user) =>
+        user.email === editingUser?.email
+          ? { ...user, permissions: selectedPermissions.map(item => item.name) }
+          : user
+      )
     )
     setEditingUser('')
   }
   return (
     <div className={classNames(cls.UserEditModal, {}, ['modal'])}>
-      <div className={cls.header}>Изменить пользователя</div>
+      <div className={cls.header}>Изменить пользователя <br/> {editingUser?.name}</div>
       {editingUser && (
         <CustomSelect
           selectedPermissions={selectedPermissions}

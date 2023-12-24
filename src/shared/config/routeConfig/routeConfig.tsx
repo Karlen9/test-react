@@ -21,7 +21,8 @@ export enum RouteNames {
   BANNERS = 'Баннеры',
   TEAM = 'Команда',
   BLOG = 'Блог',
-  EXCHANGE = 'Обмен валют'
+  EXCHANGE = 'Обмен валют',
+  ADMIN = 'Администратор'
 }
 
 export const RoutePath: Record<AppRoutes, string> = {

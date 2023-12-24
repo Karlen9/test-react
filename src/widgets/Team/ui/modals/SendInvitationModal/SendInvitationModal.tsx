@@ -11,18 +11,19 @@ type SendInvitationModalProps = {
   setIsOpen: (val: boolean) => void
   allUsers: User[]
   setAllUsers: (val: User[]) => void
+  selectedPermissions: { name: string; id: number; }[],
+  setSelectedPermissions: (val: { name: string; id: number; }[]) => void
 }
 
 export const SendInvitationModal: React.FC<SendInvitationModalProps> = ({
   setIsOpen,
   allUsers,
-  setAllUsers
+  setAllUsers,
+  selectedPermissions,
+  setSelectedPermissions
 }) => {
   const [email, setEmail] = useState('')
   const [error, setError] = useState('')
-  const [selectedPermissions, setSelectedPermissions] = useState<
-    { name: string; id: number }[]
-  >([])
   const onClose = () => {
     setIsOpen(false)
   }

@@ -1,9 +1,9 @@
 import cls from './TeamLayout.module.scss'
-import users from '../../../../source.json'
+import allUsers from '../../../../source.json'
 import { Button } from 'shared/ui'
 import { ButtonTheme } from 'shared/ui/Button/Button'
 import { UserLayout } from 'widgets/Team'
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { SendInvitationModal, UserEditModal, UserRemovedModal } from '../modals'
 import { User } from 'shared/models/User'
 import React from 'react'
@@ -12,33 +12,39 @@ import { useScreenSize } from 'shared/hooks/useScreenSize'
 import BurgerIcon from 'shared/assets/icons/burger.svg'
 import { useStore } from 'shared'
 
-type TeamLayoutProps = {
-  users: User[]
-}
-
-export const TeamLayout: React.FC<TeamLayoutProps> = () => {
+export const TeamLayout = () => {
   const [isInviteUserModalOpen, setIsInviteUserModalOpen] = useState(false)
   const [isRemoveModalOpen, setIsRemoveModalOpen] = useState(false)
   const [isSearchOpen, setIsSearchOpen] = useState(false)
-  const [allUsers, setAllUsers] = useState<User[]>(users)
   const [searchValue, setSearchValue] = useState('')
   const [editingUser, setEditingUser] = useState('')
   const { setCollapsed } = useStore()
+  const [selectedPermissions, setSelectedPermissions] = useState<
+  { name: string; id: number }[]
+>([])
+  const { isMobile } = useScreenSize()
   const onAddUser = () => {
     setIsInviteUserModalOpen(true)
   }
+  const users: User[] = JSON.parse(localStorage.getItem('users') ?? '[]')
+  const setUsers =  (users: User[]) => localStorage.setItem('users', JSON.stringify(users))
 
-  const { isMobile } = useScreenSize()
+  useEffect(() => {
+    if (users?.length) return
+    localStorage.setItem('users', JSON.stringify(allUsers))
+  }, [])
+
 
   const filteredUsers = useMemo(() => {
-    return allUsers.filter((user) => {
+    if(!searchValue) return users
+    return users.filter((user) => {
       return user.email.toLowerCase().includes(searchValue.toLowerCase())
     })
-  }, [searchValue])
+  }, [searchValue, users])
 
   const removeUser = (email: string) => {
-    const newArray = allUsers.filter((user) => user.email !== email)
-    setAllUsers(newArray)
+    const newArray = users.filter((user) => user.email !== email)
+    setUsers(newArray)
     setIsRemoveModalOpen(true)
   }
 
@@ -95,8 +101,10 @@ export const TeamLayout: React.FC<TeamLayoutProps> = () => {
       {isInviteUserModalOpen && (
         <SendInvitationModal
           setIsOpen={setIsInviteUserModalOpen}
-          setAllUsers={setAllUsers}
-          allUsers={allUsers}
+          setAllUsers={setUsers}
+          allUsers={users}
+          selectedPermissions={selectedPermissions}
+          setSelectedPermissions={setSelectedPermissions}
         />
       )}
       {isRemoveModalOpen && (
@@ -104,10 +112,12 @@ export const TeamLayout: React.FC<TeamLayoutProps> = () => {
       )}
       {editingUser && (
         <UserEditModal
-          editingUser={allUsers.find((user) => user.email === editingUser)}
+          editingUser={users.find((user) => user.email === editingUser)}
           setEditingUser={setEditingUser}
-          allUsers={allUsers}
-          setAllUsers={setAllUsers}
+          allUsers={users}
+          selectedPermissions={selectedPermissions}
+          setSelectedPermissions={setSelectedPermissions}
+          setAllUsers={setUsers}
         />
       )}
     </>

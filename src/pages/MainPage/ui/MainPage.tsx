@@ -1,13 +1,12 @@
 import cls from './MainPage.module.scss'
 import { TeamLayout } from 'widgets/Team'
-import { users } from 'shared/lib/constants/constants'
 
 const MainPage = () => {
   return (
     <div className={cls.mainPageWrapper}>
       <div className={cls.MainPage}>
         <div className={cls.pageWrapper}>
-          <TeamLayout users={users} />
+          <TeamLayout />
         </div>
       </div>
     </div>

@@ -56,12 +56,16 @@
   top: 40% !important;
 }
 
+.optionContainer {
+  max-height: none !important;
+}
+
 @media (max-width: 650px) {
   .modal {
     padding: 20px 34px;
 
   }
-
+ 
   .searchWrapper {
     min-width: 100%;
   }
